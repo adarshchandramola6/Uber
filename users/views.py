@@ -53,26 +53,16 @@ class DeleteStudentsView(APIView):
         instance = Student.objects.get(id=pk)
         instance.delete()
         return Response(("data","deleted"))
-
       
    
 class StudentAddressView(APIView):
      
     def get(self,Address):
-      params = Address.data
-      print("params",params)
-      return Response("message","Done")
-
-      print("sav adr",save.data)
-      street_name = request.data.get(street_name)
-      print("street",street_name)
-      if name:
-         instance = StudentAddress.objects.filter(street_name)
-      else:
-            instance = Address.objects.all()
-      instance = Address.objects.all()
-      serializers = GetStudentAddressSerializers(instance,many=True)
-      return Response(serializers.data)   
+         instance = Address.objects.all(id=pk)
+         instance = Address.objects.all()
+         serializers = StudentDetailsAddressSerializers(instance,many=True)
+         return Response(serializers.data)   
+        
      
 class StudentDetailsAddressViews(APIView):
     def get(self,request,pk):

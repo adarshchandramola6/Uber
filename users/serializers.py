@@ -14,17 +14,16 @@ class Orders(serializers.ModelSerializer):
         fields = '__all__'                
 
 
-class StudentAddress(serializers.ModelSerializer):
+class StudentAddressSerializers(serializers.ModelSerializer):
     class Meta:
         models=Student
         fields = '__all__'                
 
 
 class StudentDetailsAddressSerializers(serializers.ModelSerializer):
-    StudentAddress = StudentAddress
+    addresses = StudentAddressSerializers(many=True)
     class Meta:
         models=Student
-        fields = ("first_name","sur_name","birth",'address')         
+        fields = ("first_name","sur_name","birth","addresses")         
 
-class StudentDetailsAddressSerializers(serializers.ModelSerializer):
-    StudentAddress = StudentAddress             
+            
